@@ -10,6 +10,11 @@ The project contains:
 Usage:
 
   In order to use this engine, you need to create (or copy) the scenic.js file (it's position doesn't matter).
+  
   Then, use the 'system.load' method:   system.load('TYPE', 'NAME', '../FILE.js', system.dom.head)
+  
   The project (even once your assets are declared in the scenic.js) must be started with the index.js root file located in the engine's folder.
+  
   This file COULD NOT be moved.
+
+  The engine's folder could be renamed or located wherever you want.
