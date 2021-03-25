@@ -1,4 +1,4 @@
-# enJineS
+# enjines
 A basic engine that could be use for all kind of js canvas projects.
 
 
