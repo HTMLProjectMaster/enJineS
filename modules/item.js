@@ -36,11 +36,13 @@ const item = {
 			}
 		}
 	},
-	clear: function(name){
+	clear: function(obj, silent){
 		for(const layers of item.layout){
 			for(let i = 0; i < layers.content.length; i++){
-				if(layers.content[i].name == name){
-					console.log('INFO:	deleted: "' + layers.content[i].name + '"')
+				if(layers.content[i] === obj){
+					if(!silent){
+						console.log('INFO:	deleted: "' + layers.content[i].name + '"')
+					}
 					layers.content.splice(i, 1)
 				}
 			}
