@@ -37,16 +37,40 @@ const item = {
 		}
 	},
 	clear: function(obj, silent){
-		for(const layers of item.layout){
-			for(let i = 0; i < layers.content.length; i++){
-				if(layers.content[i] === obj){
+		for(var i = 0; i < item.layout.length; i++){
+			for(var j = 0; j < item.layout[i].content.length; j++){	
+				if(item.layout[i].content[j] === obj){
 					if(!silent){
-						console.log('INFO:	deleted: "' + layers.content[i].name + '"')
+						console.log('INFO:	deleted: "' + item.layout[i].content[j].name + '"')
 					}
-					layers.content.splice(i, 1)
+					item.layout[i].content.splice(j, 1)
+				}else{
+					if(item.layout[i].content[j].children != undefined){
+						for(var k = 0; k < item.layout[i].content[j].children.length; k++){
+							if(item.layout[i].content[j].children[k] === obj){
+								item.layout[i].content[j].children.splice(k, 1)
+							}
+						}
+					}
 				}
 			}
 		}
 
+	},
+	hierarchy(){
+		for(var i = 0; i < item.layout.length; i++){
+			for(var j = 0; j < item.layout[i].content.length; j++){
+				if(item.layout[i].content[j].children != undefined){
+					if(item.layout[i].content[j].children[0] != undefined){
+						for(const child of item.layout[i].content[j].children){
+							if(child.position != undefined){
+							//	child.position = item.layout[i].content[j].position
+								child.update()
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

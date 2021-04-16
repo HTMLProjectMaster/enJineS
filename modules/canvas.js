@@ -17,5 +17,6 @@ const canvas = {
 				layers.content[i].update()
 			}
 		}
+		item.hierarchy()
 	}
 }

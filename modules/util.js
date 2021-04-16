@@ -5,9 +5,10 @@ let util = {
 	rng: function(max){
 		return Math.floor(Math.random() * Math.floor(max))
 	},
-	line: function(x1, y1, x2, y2, color){
+	line: function(x1, y1, x2, y2, width, color){
 		canvas.context.beginPath()
 		canvas.context.strokeStyle = color
+		canvas.context.lineWidth = width
 		canvas.context.moveTo(x1, y1)
 		canvas.context.lineTo(x2, y2)	
 		canvas.context.stroke()
@@ -61,5 +62,12 @@ let util = {
 				y: elem.position.y + elem.transform.height * 0.5
 			}
 		}
+	},
+	parseProperty(master, slave, property, mode){
+		if(mode == 'absolute'){slave.property = master.property}
+		if(mode == 'additive'){slave.property += master.property}
+		if(mode == 'substract'){slave.property -= master.property}
+		if(mode == 'multiply'){slave.property = slave.property * master.property}
+		if(mode == 'divise'){slave.property = slave.property / master.property}
 	}
 }

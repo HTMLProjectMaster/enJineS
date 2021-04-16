@@ -41,6 +41,7 @@ const system = {
 				}
 			}
 		}
+		return object
 	}
 }
 
